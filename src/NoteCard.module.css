@@ -1,0 +1,22 @@
+.noteCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
+
+.noteInitials {
+  border: 1px solid;
+  border-radius: 50%;
+  padding: 0.5rem;
+  background-color: blue;
+  color: whitesmoke;
+}
+
+.noteName {
+  margin-left: 1.5rem;
+}
+
+.noteName > h1 {
+  font-size: 1.5rem;
+}

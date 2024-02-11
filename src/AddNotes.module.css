@@ -1,0 +1,36 @@
+.notesContainer {
+  background-color: whitesmoke;
+  width: 30%;
+  height: 100vh;
+  position: relative;
+}
+
+.notesHeader {
+  text-align: center;
+  position: relative;
+  top: 1.5rem;
+}
+
+.notesHeader > h1 {
+  font-weight: 700;
+  position: sticky;
+}
+
+.addNotes {
+  font-size: 70px;
+  color: #0047ff;
+  position: absolute;
+  right: 1rem;
+  bottom: 2rem;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+
+.addNotes:hover {
+  transform: scale(1.2);
+}
+
+.newNoteContainer {
+  margin-top: 6rem;
+  overflow-y: scroll;
+}
