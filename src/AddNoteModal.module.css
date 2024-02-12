@@ -114,3 +114,7 @@
   position: relative;
   left: 85%;
 }
+
+.addborder {
+  border: 2px blue;
+}

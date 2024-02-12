@@ -1,0 +1,31 @@
+.pocketContainer {
+  width: 70%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header {
+  text-align: center;
+}
+
+.header > h1 {
+  margin-bottom: 1rem;
+}
+
+.header > p {
+  margin-bottom: 0.2rem;
+}
+
+footer {
+  display: flex;
+  position: absolute;
+  left: 50%;
+  bottom: -13rem;
+  transform: translateX(-50%);
+}
+
+footer > p {
+  margin-left: 0.5rem;
+}

@@ -21,9 +21,9 @@ const AddNotes = () => {
         <IoMdAddCircle className={styles.addNotes} onClick={toggleModal} />
 
         <div className={styles.newNoteContainer}>
-          <NoteCard />
-          <NoteCard />
-          <NoteCard />
+          {noteGroup.length > 0 ? noteGroup.map((group, index) => {
+            return <NoteCard key = {index} groupName = {group?.groupName} groupColor = {group?.groupColor} groupInitials = {group?.groupInitials}/>
+          }) : null}
         </div>
       </div>
 

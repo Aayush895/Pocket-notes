@@ -1,9 +1,11 @@
+/* eslint-disable react/prop-types */
 import styles from './AddNoteModal.module.css'
 import { useState } from 'react'
 
 const AddNoteModal = ({ setshowModal, noteGroup, setnoteGroup }) => {
   const [input, setinput] = useState('')
   const [grpColor, setgrpColor] = useState(null)
+  // const [isClicked, setisClicked] = useState(false)
 
   const closeAddNote = () => {
     setshowModal(false)
@@ -32,6 +34,10 @@ const AddNoteModal = ({ setshowModal, noteGroup, setnoteGroup }) => {
   }
 
   const fetchColor = (e) => {
+    // if (isClicked) {
+    //   setisClicked(false)
+    // }
+    // setisClicked(true)
     const div = document.getElementsByClassName(e.target.className)[0]
     setgrpColor(window.getComputedStyle(div).backgroundColor)
   }
