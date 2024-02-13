@@ -1,11 +1,14 @@
 /* eslint-disable react/prop-types */
-import styles from './AddNoteModal.module.css'
-import { useState } from 'react'
 
-const AddNoteModal = ({ setshowModal, noteGroup, setnoteGroup }) => {
+import styles from './AddNoteModal.module.css'
+import { useState, useContext } from 'react'
+import { NoteContext } from './utils/NoteContext'
+
+const AddNoteModal = ({ setshowModal }) => {
   const [input, setinput] = useState('')
   const [grpColor, setgrpColor] = useState(null)
-  // const [isClicked, setisClicked] = useState(false)
+
+  const { noteGroup, setnoteGroup } = useContext(NoteContext)
 
   const closeAddNote = () => {
     setshowModal(false)
