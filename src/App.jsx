@@ -1,15 +1,21 @@
 import AddNotes from './AddNotes'
+import Notes from './Notes'
 import PocketnotesHeader from './PocketnotesHeader'
 import { NoteContext } from './utils/NoteContext'
 import { useState } from 'react'
 
 function App() {
   const [noteGroup, setnoteGroup] = useState([])
+  const [showNotes, setshowNotes] = useState(false)
+
+  
   return (
     <main>
-      <NoteContext.Provider value={{ noteGroup, setnoteGroup }}>
+      <NoteContext.Provider
+        value={{ noteGroup, setnoteGroup, showNotes, setshowNotes }}
+      >
         <AddNotes />
-        <PocketnotesHeader />
+        {showNotes ? <Notes /> : <PocketnotesHeader />}
       </NoteContext.Provider>
     </main>
   )

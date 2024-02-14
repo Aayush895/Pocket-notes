@@ -7,12 +7,12 @@ import { NoteContext } from './utils/NoteContext'
 
 const AddNotes = () => {
   const [showModal, setshowModal] = useState(false)
-  const { noteGroup } = useContext(NoteContext)
+  const { noteGroup, setshowNotes } = useContext(NoteContext)
 
   /**
    * 1.) Have to create a context for note group instead of using state as this data will be used in multiple components and this will create the prop drilling issue for the application. --> Done
    *
-   * 2.) Have to create a 'CreateNotes' or 'AddNotes' components where the user can write and review notes for the selected note group.
+   * 2.) Have to create a 'CreateNotes' or 'AddNotes' components where the user can write and review notes for the selected note group. --> In progress
    *
    * 3.) Inside the 'AddNotes' component I have to add a 'TextArea' component which will be used for writing and adding the text component to the      notes.
    *
@@ -25,9 +25,13 @@ const AddNotes = () => {
     setshowModal(!showModal)
   }
 
+  const handleClick = () => {
+    setshowNotes(false)
+  }
+
   return (
     <>
-      <div className={styles.notesContainer}>
+      <div className={styles.notesContainer} onClick={handleClick}>
         <header className={styles.notesHeader}>
           <h1>Pocket Notes</h1>
         </header>
