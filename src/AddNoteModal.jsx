@@ -17,7 +17,7 @@ const AddNoteModal = ({ setshowModal }) => {
   const getInitials = (input) => {
     let str = ''
     let arr = input.split(' ')
-    console.log(arr.length)
+
     if (arr.length == 1) {
       str = arr[0].charAt(0)
     } else {
@@ -32,7 +32,14 @@ const AddNoteModal = ({ setshowModal }) => {
 
     setnoteGroup([
       ...noteGroup,
-      { groupName: input, groupColor: grpColor, groupInitials: initials, id: noteGroup.length, isGroupClicked: false },
+      {
+        groupName: input,
+        groupColor: grpColor,
+        groupInitials: initials,
+        id: noteGroup.length,
+        isGroupClicked: false,
+        notes: [],
+      },
     ])
   }
 

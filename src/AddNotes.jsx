@@ -10,13 +10,7 @@ const AddNotes = () => {
   const { noteGroup, setshowNotes } = useContext(NoteContext)
 
   /**
-   * 1.) Have to create a context for note group instead of using state as this data will be used in multiple components and this will create the prop drilling issue for the application. --> Done
-   *
-   * 2.) Have to create a 'CreateNotes' or 'AddNotes' components where the user can write and review notes for the selected note group. --> In progress
-   *
-   * 3.) Inside the 'AddNotes' component I have to add a 'TextArea' component which will be used for writing and adding the text component to the      notes.
-   *
-   * 4.) Make the notes scrollable.
+   *  1.) Make the notes scrollable.
    *
    * IMP: I have to store the note groups and all the notes within the note groups inside 'localStorage'.
    */
