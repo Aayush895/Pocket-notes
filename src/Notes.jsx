@@ -27,7 +27,7 @@ const Notes = () => {
 
         <div className={styles.addNotesContainer}>
           <div className={styles.addNotes}>
-            {/* <textarea name="" id="" cols="30" rows="10"></textarea> */}
+            <textarea name='addNotes' placeholder='Enter your note here....' cols="170" rows="15"/>
           </div>
         </div>
 

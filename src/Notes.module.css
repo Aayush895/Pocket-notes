@@ -32,3 +32,15 @@
 .noteHeader > h1 {
     margin-left: 3rem;
 }
+
+.addNotesContainer {
+    border: 1px solid;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: blue;
+}
+
+.addNotes > textarea {
+    padding: 1rem;
+}
