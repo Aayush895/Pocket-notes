@@ -1,15 +1,38 @@
 import styles from './Notes.module.css'
+import { NoteContext } from './utils/NoteContext'
+import { useContext } from 'react'
 
 const Notes = () => {
+  const {noteGroup} = useContext(NoteContext)
+
   return (
     <div className={styles.noteContainer}>
+
       <div className={styles.subnoteContainer}>
-        <div className={styles.noteHeader}></div>
-        <div className={styles.allNotes}></div>
-        <div className={styles.addNotesContainer}>
-          <div className={styles.addNotes}></div>
+
+        <div className={styles.noteHeader}>
+          {noteGroup.map((note) => {
+            if(note.isGroupClicked) {
+              return (<>
+                <div className={styles.noteGroupIni} style={{backgroundColor: note.groupColor}} key={noteGroup.id}>
+                  <h1>{note.groupInitials}</h1>
+                </div>
+                <h1>{note.groupName}</h1>
+              </>)
+            }
+          })}
         </div>
+
+        <div className={styles.allNotes}></div>
+
+        <div className={styles.addNotesContainer}>
+          <div className={styles.addNotes}>
+            {/* <textarea name="" id="" cols="30" rows="10"></textarea> */}
+          </div>
+        </div>
+
       </div>
+
     </div>
   )
 }

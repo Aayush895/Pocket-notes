@@ -8,7 +8,7 @@ function App() {
   const [noteGroup, setnoteGroup] = useState([])
   const [showNotes, setshowNotes] = useState(false)
 
-  
+  console.log(noteGroup);
   return (
     <main>
       <NoteContext.Provider

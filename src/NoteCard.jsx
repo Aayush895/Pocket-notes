@@ -4,10 +4,19 @@ import { NoteContext } from './utils/NoteContext'
 import { useContext } from 'react'
 
 const NoteCard = ({ groupName, groupColor, groupInitials }) => {
-  const { setshowNotes } = useContext(NoteContext)
+  const { noteGroup, setshowNotes  } = useContext(NoteContext)
 
   const handleClick = (e) => {
     e.stopPropagation()
+    noteGroup.map((note) => {
+      if(note.isGroupClicked) {
+        note.isGroupClicked = false
+      }
+
+      if(note.groupName == e.target.children[1].children[0].innerText) {
+        note.isGroupClicked = true
+      }
+    })
     setshowNotes(true)
   }
 

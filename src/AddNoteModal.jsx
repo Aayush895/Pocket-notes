@@ -32,15 +32,11 @@ const AddNoteModal = ({ setshowModal }) => {
 
     setnoteGroup([
       ...noteGroup,
-      { groupName: input, groupColor: grpColor, groupInitials: initials },
+      { groupName: input, groupColor: grpColor, groupInitials: initials, id: noteGroup.length, isGroupClicked: false },
     ])
   }
 
   const fetchColor = (e) => {
-    // if (isClicked) {
-    //   setisClicked(false)
-    // }
-    // setisClicked(true)
     const div = document.getElementsByClassName(e.target.className)[0]
     setgrpColor(window.getComputedStyle(div).backgroundColor)
   }
