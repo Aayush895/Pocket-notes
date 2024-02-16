@@ -7,8 +7,8 @@
   cursor: pointer;
 }
 
-.noteCard:hover {
-  background-color: lightgray;
+.noteCard:focus {
+  background-color: lightgray !important;
 }
 
 .noteInitials {

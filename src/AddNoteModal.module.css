@@ -119,3 +119,9 @@
 .addborder {
   border: 2px blue;
 }
+
+@media (max-width: 428px) {
+  .modal {
+    width: 100%;
+  }
+}

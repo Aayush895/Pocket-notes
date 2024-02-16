@@ -1,9 +1,13 @@
 import styles from './Notes.module.css'
 import { NoteContext } from './utils/NoteContext'
+import { ShowNoteContext } from './utils/ShowNoteContext'
+import { RiSendPlane2Fill } from 'react-icons/ri'
 import { useContext, useState } from 'react'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 
 const Notes = () => {
   let { noteGroup, setnoteGroup } = useContext(NoteContext)
+  const { isNote, setisNote } = useContext(ShowNoteContext)
   const [addNote, setaddNote] = useState('')
 
   const handleNoteChange = (e) => {
@@ -11,22 +15,38 @@ const Notes = () => {
   }
 
   const handleAddNote = () => {
-    noteGroup.map((note) => {
-      if (note.isGroupClicked) {
-        const updatedNote = { ...note, notes: [...note.notes, addNote] }
-        const updatedNoteGroup = noteGroup.map((group) =>
-          group.isGroupClicked ? updatedNote : group
-        )
-        setnoteGroup(updatedNoteGroup)
-        setaddNote('')
-      }
-    })
+    if (addNote != '') {
+      noteGroup.map((note) => {
+        if (note.isGroupClicked) {
+          const updatedNote = { ...note, notes: [...note.notes, addNote] }
+          const updatedNoteGroup = noteGroup.map((group) =>
+            group.isGroupClicked ? updatedNote : group
+          )
+          setnoteGroup(updatedNoteGroup)
+          setaddNote('')
+        }
+      })
+    }
+  }
+
+  const handleShowNote = () => {
+    setisNote(false)
   }
 
   return (
-    <div className={styles.noteContainer}>
+    <div
+      className={styles.noteContainer}
+      style={{
+        width: window.innerWidth <= 428 && isNote ? '100%' : null,
+        display: window.innerWidth <= 428 && !isNote ? 'none' : null,
+      }}
+    >
       <div className={styles.subnoteContainer}>
         <div className={styles.noteHeader}>
+          {window.innerWidth <= 428 ? (
+            <FaArrowLeftLong onClick={handleShowNote} />
+          ) : null}
+
           {noteGroup.map((note) => {
             if (note.isGroupClicked) {
               return (
@@ -49,7 +69,11 @@ const Notes = () => {
           {noteGroup.map((note) => {
             if (note.isGroupClicked) {
               return note.notes.map((item, idx) => {
-                return <p key={idx}>{item}</p>
+                return (
+                  <p key={idx} className={styles.note}>
+                    {item}
+                  </p>
+                )
               })
             }
           })}
@@ -66,7 +90,12 @@ const Notes = () => {
               onChange={handleNoteChange}
             />
           </div>
-          <button onClick={handleAddNote}>Add Note</button>
+
+          <RiSendPlane2Fill
+            size="30"
+            onClick={handleAddNote}
+            className={styles.submitNote}
+          />
         </div>
       </div>
     </div>

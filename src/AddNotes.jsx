@@ -4,18 +4,18 @@ import NoteCard from './NoteCard'
 import styles from './AddNotes.module.css'
 import AddNoteModal from './AddNoteModal'
 import { NoteContext } from './utils/NoteContext'
+import { ShowNoteContext } from './utils/ShowNoteContext'
 
 const AddNotes = () => {
   const [showModal, setshowModal] = useState(false)
   const { noteGroup, setshowNotes } = useContext(NoteContext)
-
+  const { isNote } = useContext(ShowNoteContext)
   /**
-   *  1.) Make the notes scrollable.
-   *
    * IMP: I have to store the note groups and all the notes within the note groups inside 'localStorage'.
    */
 
-  const toggleModal = () => {
+  const toggleModal = (e) => {
+    e.stopPropagation()
     setshowModal(!showModal)
   }
 
@@ -25,7 +25,11 @@ const AddNotes = () => {
 
   return (
     <>
-      <div className={styles.notesContainer} onClick={handleClick}>
+      <div
+        className={styles.notesContainer}
+        onClick={handleClick}
+        style={{ display: window.innerWidth <= 428 && isNote ? 'none' : null }}
+      >
         <header className={styles.notesHeader}>
           <h1>Pocket Notes</h1>
         </header>
@@ -40,6 +44,7 @@ const AddNotes = () => {
                     groupName={group?.groupName}
                     groupColor={group?.groupColor}
                     groupInitials={group?.groupInitials}
+                    tabIdx={index}
                   />
                 )
               })

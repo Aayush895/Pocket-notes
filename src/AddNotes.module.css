@@ -33,4 +33,11 @@
 .newNoteContainer {
   margin-top: 6rem;
   overflow-y: scroll;
+  height: 70vh;
+}
+
+@media (max-width: 428px) {
+  .notesContainer {
+    width: 100%;
+  }
 }

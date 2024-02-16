@@ -7,11 +7,17 @@ import { NoteContext } from './utils/NoteContext'
 const AddNoteModal = ({ setshowModal }) => {
   const [input, setinput] = useState('')
   const [grpColor, setgrpColor] = useState(null)
+  const [isColorSelected, setisColorSelected] = useState(false)
 
   const { noteGroup, setnoteGroup } = useContext(NoteContext)
+ 
 
   const closeAddNote = () => {
-    setshowModal(false)
+    if (isColorSelected) {
+      setshowModal(false)
+    } else {
+      alert('Please choose a color for your note group')
+    }
   }
 
   const getInitials = (input) => {
@@ -28,23 +34,26 @@ const AddNoteModal = ({ setshowModal }) => {
   }
 
   const addNote = () => {
-    const initials = getInitials(input)
+    if (isColorSelected) {
+      const initials = getInitials(input)
 
-    setnoteGroup([
-      ...noteGroup,
-      {
-        groupName: input,
-        groupColor: grpColor,
-        groupInitials: initials,
-        id: noteGroup.length,
-        isGroupClicked: false,
-        notes: [],
-      },
-    ])
+      setnoteGroup([
+        ...noteGroup,
+        {
+          groupName: input,
+          groupColor: grpColor,
+          groupInitials: initials,
+          id: noteGroup.length,
+          isGroupClicked: false,
+          notes: [],
+        },
+      ])
+    }
   }
 
   const fetchColor = (e) => {
     const div = document.getElementsByClassName(e.target.className)[0]
+    setisColorSelected(true)
     setgrpColor(window.getComputedStyle(div).backgroundColor)
   }
 
