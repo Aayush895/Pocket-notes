@@ -82,4 +82,8 @@
   .noteGroupIni {
     margin-left: 1.5rem;
   }
+
+  .allNotes {
+    height: 56vh;
+  }
 }
