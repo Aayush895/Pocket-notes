@@ -10,10 +10,7 @@ const AddNotes = () => {
   const [showModal, setshowModal] = useState(false)
   const { noteGroup, setshowNotes } = useContext(NoteContext)
   const { isNote } = useContext(ShowNoteContext)
-  /**
-   * IMP: I have to store the note groups and all the notes within the note groups inside 'localStorage'.
-   */
-
+  
   const toggleModal = (e) => {
     e.stopPropagation()
     setshowModal(!showModal)
