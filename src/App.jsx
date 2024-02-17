@@ -5,14 +5,24 @@ import { NoteContext } from './utils/NoteContext'
 import { ShowNoteContext } from './utils/ShowNoteContext'
 import { useState } from 'react'
 
+function getStorageItems() {
+  let group = localStorage.getItem('groups')
+
+  if (group) {
+    return JSON.parse(localStorage.getItem('groups'))
+  } else {
+    return []
+  }
+}
+
 function App() {
-  const [noteGroup, setnoteGroup] = useState([])
+  const [noteGroup, setnoteGroup] = useState(getStorageItems())
   const [showNotes, setshowNotes] = useState(false)
   const [isNote, setisNote] = useState(false)
 
   return (
     <main>
-      <ShowNoteContext.Provider value={{isNote, setisNote}}>
+      <ShowNoteContext.Provider value={{ isNote, setisNote }}>
         <NoteContext.Provider
           value={{ noteGroup, setnoteGroup, showNotes, setshowNotes }}
         >

@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { IoMdAddCircle } from 'react-icons/io'
 import NoteCard from './NoteCard'
 import styles from './AddNotes.module.css'
@@ -22,6 +22,11 @@ const AddNotes = () => {
   const handleClick = () => {
     setshowNotes(false)
   }
+
+  // Adding noteGroups to localStorage through useEffect
+  useEffect(() => {
+    localStorage.setItem('groups', JSON.stringify(noteGroup))
+  }, [noteGroup])
 
   return (
     <>

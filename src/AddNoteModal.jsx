@@ -4,13 +4,14 @@ import styles from './AddNoteModal.module.css'
 import { useState, useContext } from 'react'
 import { NoteContext } from './utils/NoteContext'
 
+// Whenever the create button is clicked noteGroup array changes as a noteGroup is added in the array. Now I want to add the noteGroup to the localStorage whenever the noteGroup changes. So we have to use useEffect hook for storing in local storage.
+
 const AddNoteModal = ({ setshowModal }) => {
   const [input, setinput] = useState('')
   const [grpColor, setgrpColor] = useState(null)
   const [isColorSelected, setisColorSelected] = useState(false)
 
   const { noteGroup, setnoteGroup } = useContext(NoteContext)
- 
 
   const closeAddNote = () => {
     if (isColorSelected) {
@@ -56,6 +57,8 @@ const AddNoteModal = ({ setshowModal }) => {
     setisColorSelected(true)
     setgrpColor(window.getComputedStyle(div).backgroundColor)
   }
+
+ 
 
   return (
     <div className={styles.modalContainer}>
